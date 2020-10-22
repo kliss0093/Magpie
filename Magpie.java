@@ -7,7 +7,11 @@ public class Magpie
 
    public String getResponse(String statement)
    {
+     statement.trim();
      String response = "";
+    if(statement.indexOf("") == 0){
+       return "Say something, please.";
+    }
      if (statement.indexOf("no") >= 0
             && (statement.charAt(statement.indexOf("no")) >= 0)){
        response = "Why so negative?";
