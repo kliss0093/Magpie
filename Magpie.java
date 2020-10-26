@@ -28,29 +28,40 @@ public class Magpie3
 	 * @return a response based on the rules given
 	 */
 	public String getResponse(String statement)
-	{
-		String response = "";
-		if (statement.length() == 0)
-		{
-			response = "Say something, please.";
-		}
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-		}
-		else if (findKeyword(statement, "mother") >= 0
-				|| findKeyword(statement, "father") >= 0
-				|| findKeyword(statement, "sister") >= 0
-				|| findKeyword(statement, "brother") >= 0)
-		{
-			response = "Tell me more about your family.";
-		}
-		else
-		{
-			response = getRandomResponse();
-		}
-		return response;
-	}
+   {
+     statement.trim();
+     String response = "";
+    if(statement.indexOf("") == 0){
+       return "Say something, please.";
+    }
+     if (statement.indexOf("no") >= 0
+            && (statement.charAt(statement.indexOf("no")) >= 0)){
+       response = "Why so negative?";
+     } else if (statement.indexOf("mother") >= 0
+                 || statement.indexOf("father") >= 0
+                 || statement.indexOf("sister") >= 0
+                 || statement.indexOf("brother") >= 0) {
+       response = "Tell me more about your family.";
+     }
+     else if (statement.indexOf("pizza") >= 0 || statement.indexOf("nachos") >= 0){//Author: Triston Purpose: covers common food choices.
+       response = "Tell me more about food.";
+     }
+     else if (statement.indexOf("nintendo") >= 0 ||statement.indexOf("xbox") >= 0){
+      response = "What video games do you like to play on your console?";//Hunter - makes chatbot interested in video games
+    }
+    else if (statement.indexOf("Java")  >= 0 || statement.indexOf("C++") >= 0){////Author: Triston Purpose: covers common programming languages
+      response = "I also enjoy programming!";
+    }
+    else if (statement.indexOf("dog") >= 0 ||statement.indexOf("cat") >= 0){//Hunter
+      response = "Tell me more about your pets.";
+    }
+    else if (statement.indexOf("Mr.") >= 0 ||statement.indexOf("Mrs.") >= 0 || statement.indexOf("Ms.") >= 0){//Author: Triston Purpose: Fills requirement
+      response = (statement.indexOf("Mr.") >=0 ? "He":"She") + " sounds like a good teacher.";
+    } else {
+       response = getRandomResponse();
+     }
+     return response;
+   }
 
 	/**
 	 * Search for one word in phrase. The search is not case
