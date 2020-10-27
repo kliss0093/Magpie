@@ -19,10 +19,10 @@ public class MagpieRunner2
               Scanner in = new Scanner (System.in);
               String statement = in.nextLine();
 
-              while (!statement.equals("Bye"))
+              while (!statement.toLowerCase().equals("bye"))
               {
                       System.out.println (maggie.getResponse(statement));
-                      statement = in.nextLine();
+                      statement = in.nextLine().toLowerCase();
               }
        }
 }
