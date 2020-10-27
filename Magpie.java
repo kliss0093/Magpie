@@ -8,7 +8,7 @@
  * @author Laurie White
  * @version April 2012
  */
-public class Magpie3
+public class Magpie
 {
 	/**
 	 * Get a default greeting
@@ -29,9 +29,8 @@ public class Magpie3
 	 */
 	public String getResponse(String statement)
    {
-     statement.trim();
      String response = "";
-    if(statement.indexOf("") == 0){
+    if(statement.length() == 0 || statement.indexOf(" ") == 0){
        return "Say something, please.";
     }
      if (statement.indexOf("no") >= 0
