@@ -53,8 +53,12 @@ public class Magpie {
 
       } else if (findKeyword(statement, "frozen yogurt") >= 0) { //Hunter: adds frozen yogurt
           response = "I prefer ice cream.";
-      } else if (findKeyword(statement, "O'Connell") >= 0) { //Hunter: adds frozen yogurt
+      } else if (findKeyword(statement, "O'Connell") >= 0) { //Hunter: adds teacher
           response = "Ms.O'Connell my favorite teacher!";
+      } else if (findKeyword(statement, "I want") >= 0) { // Triston Adds want support
+          response = transformIWantToStatement(statement);
+      } else if (findKeyword(statement, "you") >= 0 && findKeyword(statement, "I") >= 0){ // Triston adds you ... me support
+          response = transformYouMeStatement(statement);
       } else {
           response = getRandomResponse();
       }
@@ -69,13 +73,18 @@ public class Magpie {
   private String transformIWantToStatement(String statement) {
       //  Remove the final period, if there is one
       statement = statement.trim();
+
       String lastChar = statement.substring(statement
           .length() - 1);
       if (lastChar.equals(".")) {
           statement = statement.substring(0, statement
               .length() - 1);
       }
-      int psn = findKeyword(statement, "I want to", 0);
+      
+      if(statement.length() == 9)
+        return "What do you want? I didn't get the last part.";
+        
+      int psn = findKeyword(statement, "I want", 0);
       String restOfStatement = statement.substring(psn + 9).trim();
       return "What would it mean to " + restOfStatement + "?";
   }
@@ -89,6 +98,7 @@ public class Magpie {
   private String transformYouMeStatement(String statement) {
       //  Remove the final period, if there is one
       statement = statement.trim();
+      
       String lastChar = statement.substring(statement
           .length() - 1);
       if (lastChar.equals(".")) {
@@ -96,6 +106,9 @@ public class Magpie {
               .length() - 1);
       }
 
+      if(statement.length() == 6)
+        return "You what me? Speak coherently please.";
+        
       int psnOfYou = findKeyword(statement, "you", 0);
       int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 
@@ -212,12 +225,5 @@ public class Magpie {
       }
 
       return response;
-  }
-  public static void main() {
-      Magpie Maggie = new Magpie();
-      System.out.println(Maggie.findKeyword("She's my sister", "sister", 0));
-      System.out.println(Maggie.findKeyword("Brother Tom is helpful", "brother", 0));
-      System.out.println(Maggie.findKeyword("I can't catch wild cats.", "cat", 0));
-      System.out.println(Maggie.findKeyword("I know nothing about snow plows.", "no", 0));
   }
 }
