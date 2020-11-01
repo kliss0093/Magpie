@@ -57,7 +57,7 @@ public class Magpie {
           response = "Ms.O'Connell my favorite teacher!";
       } else if (findKeyword(statement, "I want") >= 0) { // Triston Adds want support
           response = transformIWantToStatement(statement);
-      } else if (findKeyword(statement, "you") >= 0 && findKeyword(statement, "I") >= 0){ // Triston adds you ... me support
+      } else if (findKeyword(statement, "you") >= 0 && findKeyword(statement, "me") >= 0){ // Triston adds you ... me support
           response = transformYouMeStatement(statement);
       } else {
           response = getRandomResponse();
