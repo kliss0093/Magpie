@@ -12,8 +12,18 @@ public class Magpie
        response = "Why so negative?";
      } else if (statement.indexOf("yes") >= 0) {
        response = "I like the positivity!";
+     } else if ((statement.trim()).length() == 0) {
+       response = getRandomNoncommittalResponse();
+     } else if (statement.indexOf("Mrs.O'Connell") >= 0) {
+       response = "She sounds like a great teacher!";
      } else if (statement.indexOf("new") >= 0) {
        response = "Oh, what did you get?";
+     } else if (statement.indexOf("ate") >= 0) {
+       response = "That sounds tasty.";
+     } else if (statement.indexOf("help") >= 0) {
+       response = "What's wrong?";
+     } else if (statement.indexOf("outside") >= 0) {
+       response = "I love the outdoors.";
      }else if (statement.indexOf("mother") >= 0
                  || statement.indexOf("father") >= 0
                  || statement.indexOf("sister") >= 0
@@ -21,7 +31,7 @@ public class Magpie
        response = "Tell me more about your family.";
      } else if (statement.indexOf("cat") >= 0
                  || statement.indexOf("dog") >= 0) {
-       response = "Let me hear about your pets.";
+       response = "Tell me more about your pets.";
      }else {
        response = getRandomResponse();
      }
@@ -125,6 +135,22 @@ public class Magpie
        response = "Do you really think so?";
      } else if (whichResponse == 3) {
        response = "You don't say.";
+     }
+     return response;
+         }
+   private String getRandomNoncommittalResponse()
+   {
+     final int NUMBER_OF_RESPONSES2 = 3;
+     double r2 = Math.random();
+     int whichResponse2 = (int)(r2 * NUMBER_OF_RESPONSES2);
+     String response = "";
+
+     if (whichResponse2 == 0) {
+       response = "Say something, please.";
+     } else if (whichResponse2 == 1) {
+       response = "Talk to me!";
+     } else if (whichResponse2 == 2) {
+       response = "Oh, so are you going to give me the silent treatment?";
      }
      return response;
          }
