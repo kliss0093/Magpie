@@ -12,6 +12,8 @@ public class Magpie
        response = "Why so negative?";
      } else if (statement.indexOf("yes") >= 0) {
        response = "I like the positivity!";
+     } else if (statement.indexOf("maybe") >= 0) {
+       response = "Are you on edge about something?";
      } else if ((statement.trim()).length() == 0) {
        response = getRandomNoncommittalResponse();
      } else if (statement.indexOf("Mrs.O'Connell") >= 0) {
