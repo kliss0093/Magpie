@@ -10,12 +10,19 @@ public class Magpie
      String response = "";
      if (statement.indexOf("no") >= 0) {
        response = "Why so negative?";
-     } else if (statement.indexOf("mother") >= 0
+     } else if (statement.indexOf("yes") >= 0) {
+       response = "I like the positivity!";
+     } else if (statement.indexOf("new") >= 0) {
+       response = "Oh, what did you get?";
+     }else if (statement.indexOf("mother") >= 0
                  || statement.indexOf("father") >= 0
                  || statement.indexOf("sister") >= 0
                  || statement.indexOf("brother") >= 0) {
        response = "Tell me more about your family.";
-     } else {
+     } else if (statement.indexOf("cat") >= 0
+                 || statement.indexOf("dog") >= 0) {
+       response = "Let me hear about your pets.";
+     }else {
        response = getRandomResponse();
      }
      return response;
